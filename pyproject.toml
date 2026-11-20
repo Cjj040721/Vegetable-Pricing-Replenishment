@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vegetable-pricing-replenishment"
+version = "1.0.0"
+description = "Leakage-aware demand forecasting and exact pricing/replenishment optimisation"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Junjia Cao"}]
+dependencies = [
+  "numpy>=1.26,<3",
+  "pandas>=2.1,<4",
+  "scipy>=1.11,<2",
+  "scikit-learn>=1.4,<2",
+  "matplotlib>=3.8,<4",
+]
+
+[project.scripts]
+veg-demo = "veg_pricing.demo:main"
+veg-optimize = "veg_pricing.pipeline:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,16 @@
+.DS_Store
+._*
+Thumbs.db
+.env
+.env.*
+!.env.example
+*.tmp
+*.log
+__pycache__/
+.venv/
+data/
+outputs/
+build/
+dist/
+*.egg-info/
+*.pyc
