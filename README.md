@@ -10,6 +10,7 @@ A 2026 reimplementation inspired by a 2023 mathematical modelling project
 [![Forecasting](https://img.shields.io/badge/Forecasting-scikit--learn-6E56CF)](#method)
 [![Optimisation](https://img.shields.io/badge/Optimisation-HiGHS_%2F_MILP-2AA887)](#optimisation-model)
 [![Demo](https://img.shields.io/badge/Demo-Reproducible-0072B2)](#verified-demo-results)
+[![Smoke](https://github.com/Cjj040721/Vegetable-Pricing-Replenishment/actions/workflows/smoke.yml/badge.svg)](https://github.com/Cjj040721/Vegetable-Pricing-Replenishment/actions/workflows/smoke.yml)
 
 [Quickstart](#quickstart) · [Method](#method) · [Verified Results](#verified-demo-results) · [Input Data](#input-data)
 

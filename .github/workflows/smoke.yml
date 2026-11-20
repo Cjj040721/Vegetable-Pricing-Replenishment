@@ -1,0 +1,37 @@
+name: smoke
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  synthetic-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install package
+        run: pip install -e .
+      - name: Generate synthetic sales
+        run: veg-demo --output data/demo_sales.csv
+      - name: Run forecasting and optimisation
+        run: veg-optimize --data data/demo_sales.csv --output outputs-ci
+      - name: Validate results
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          summary = json.loads(Path('outputs-ci/summary.json').read_text())
+          assert 'Optimal' in summary['optimisation']['solver_status']
+          assert summary['optimisation']['selected_rows'] == 70
+          assert summary['validation']['validation_samples'] == 2016
+          assert Path('outputs-ci/replenishment_plan.csv').is_file()
+          assert Path('outputs-ci/demo_report.png').is_file()
+          print('Synthetic forecasting and HiGHS optimisation verified.')
+          PY
